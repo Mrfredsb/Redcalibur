@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redcalibur Designs | Custom Miniature Upgrades</title>
+    <style>
+        /* Modern Reset & Light Theme Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root {
+            --bg-color: #ffffff; /* Clean white background */
+            --card-bg: #f8f9fa; /* Very light gray for product cards */
+            --accent-color: #E27A24; /* Clean Gold/Orange */
+            --text-main: #1a1a1a; /* Dark text for readability */
+            --text-muted: #555555; /* Medium gray for secondary text */
+            --border-color: #e5e7eb; /* Soft borders */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Updated Logo Section to include Image */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .main-logo-img {
+            height: 60px; /* Scales the image to fit the header */
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        /* Updated Logo Text Colors */
+        .text-redcalibur { color: #333333; /* Dark Grey */ }
+        .text-studios { color: var(--accent-color); /* Orange */ }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section with Pixel Art Background */
+        .hero {
+            text-align: center;
+            padding: 6rem 5% 5rem;
+            /* Combines a semi-transparent white overlay with your image so text is readable */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95)), url('image_95c78a.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+            color: #111;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background-color: #c0651a; /* Slightly darker orange on hover */
+        }
+
+        /* Product Catalog Grid */
+        .catalog {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 0.75rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .product-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 240px;
+            background-color: #e2e8f0; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        /* Contact / Order Section */
+        .contact {
+            background-color: var(--bg-color);
+            padding: 4rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Custom Image Background Button for Ordering */
+        .image-order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 280px;
+            height: 80px;
+            /* Dark overlay + the zoomed out pixel art */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('image_95cb66.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid #fff;
+        }
+        
+        .image-order-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-bg);
+            background-color: var(--card-bg);
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            nav a { margin: 0 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container">
+            <img src="image_95cb06.jpg" alt="Redcalibur Logo" class="main-logo-img">
+            <div class="logo-text">
+                <span class="text-redcalibur">Redcalibur</span> <span class="text-studios">Studios</span>
+            </div>
+        </a>
+        <nav>
+            <a href="#catalog">Catalog</a>
+            <a href="#about">About</a>
+            <a href="#order">Order Inquiry</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Bespoke Miniature Upgrades</h1>
+        <p>Premium, high-detail custom bits and weapons designed to give your tabletop army a legendary edge.</p>
+        <a href="#catalog" class="cta-button">Browse Wave 1</a>
+    </section>
+
+    <section class="catalog" id="catalog">
+        <h2 class="section-title">Wave 1: Combat Armaments</h2>
+        <div class="grid">
+            
+            <div class="product-card">
+                <div class="product-img">[ Sword Render Placeholder ]</div>
+                <div class="product-info">
+                    <div class="product-title">Master-Crafted Power Swords</div>
+                    <div class="product-desc">Pack of 5 unique, battle-scarred energy swords scaled for sci-fi knights.</div>
+                    <div class="product-footer">
+                        <span class="price">£8.99</span>
+                        <a href="#order" class="cta-button" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Inquire</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">[ Axe Render Placeholder ]</div>
+                <div class="product-info">
+                    <div class="product-title">Heavy Chain-Axes</div>
+                    <div class="product-desc">Pack of 5 high-impact, brutal close-combat axes with deep industrial teeth.</div>
+                    <div class="product-footer">
+                        <span class="price">£8.99</span>
+                        <a href="#order" class="cta-button" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Inquire</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">[ Shield Render Placeholder ]</div>
+                <div class="product-info">
+                    <div class="product-title">Gothic Storm Shields</div>
+                    <div class="product-desc">Pack of 3 heavy dynamic shields featuring custom relief crests.</div>
+                    <div class="product-footer">
+                        <span class="price">£7.49</span>
+                        <a href="#order" class="cta-button" style="padding: 0.4rem 1rem; font-size: 0.85rem;">Inquire</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact" id="order">
+        <div class="contact-box">
+            <h2 style="margin-bottom: 1rem;">Secure Your Components</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                All parts are printed to order in ultra-high resolution resin. For custom commissions, batch orders, or to purchase Wave 1 bits, click below.
+            </p>
+            
+            <a href="mailto:your-email@domain.com?subject=Redcalibur%20Order%20Inquiry" class="image-order-btn">
+                Order Here
+            </a>
+            
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Redcalibur Studios. Not affiliated with or endorsed by Games Workshop Ltd.</p>
+    </footer>
+
+</body>
+</html>
